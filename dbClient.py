@@ -11,7 +11,6 @@ class DBClient:
             return json.load(read_file)
 
     def addUser(self, obj):
-        os.listdir()
         with open(self.file, 'w') as source:
             with open(self.file, 'r') as read_file:
                 current = json.load(read_file)
