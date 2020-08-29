@@ -13,10 +13,11 @@ class DBClient:
             read_file.close()
             return data
 
-    def writeDB(self,data,dataName):
+    def writeDB(self, data, dataName):
         with open(self.file, 'w') as source:
             json.dump(data, source)
-            print('Successfully added {dataName}.')
+            if dataName:
+                print(f'Successfully added {dataName}.')
 
     def addUser(self, obj):
         current = self.getDB()
@@ -33,20 +34,22 @@ class DBClient:
                 data['role'] = 'user'
             data['_id'] = str(uuid.uuid1())
             current['users'].append(data)
-            self.writeDB(current,'user')
+            self.writeDB(current, 'user')
         else:
             print('Username should be unique.')
 
     def getUser(self, _username):
         data = self.getDB()
         for u in data['users']:
-            if u['username']==_username:
+            if u['username'] == _username:
                 return u
-    def getUserById(self,_id):
+
+    def getUserById(self, _id):
         data = self.getDB()
         for u in data['users']:
-            if u['_id']==_id:
+            if u['_id'] == _id:
                 return u
+
     def deleteUser(self, _id):
         pass
 
@@ -62,15 +65,28 @@ class DBClient:
             data['stock'] = int(data['stock'])
             data['price'] = float(data['price'])
             current['products'].append(data)
-            self.writeDB(current,'product')
+            self.writeDB(current, 'product')
         else:
             print('Product id should be unique.')
 
-    def getProduct(self, _id=None):
+    def getProduct(self, _id):
         if _id == None:
-            pass
+            data = self.getDB()
+            return data['products']
         else:
-            pass
+            data = self.getDB()['products']
+            for i in data:
+                if i['id'] == _id:
+                    return i
+
+    def buyItem(self, _id):
+        data = self.getDB()
+        for i in range(len(data['products'])):
+            if data['products'][i]['id'] == _id:
+                data['products'][i]['stock'] -= 1
+                print(f'Bought {data["products"][i]["name"]} for {data["products"][i]["price"]}')
+                break
+        self.writeDB(data,None)
 
     def deleteProduct(self, _id):
         pass

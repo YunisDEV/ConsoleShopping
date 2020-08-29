@@ -13,3 +13,9 @@ def getCurrentAccount():
     if getCurrentID() == None:
         return None
     return db.getUserById(getCurrentID())
+
+def getProducts(_id=None):
+    return db.getProduct(_id)
+
+def buyItem(_id):
+    db.buyItem(_id)

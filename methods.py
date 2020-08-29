@@ -1,7 +1,7 @@
 import os
 from create import createAccount, createProduct
 import auth
-from get import getInputData, getCurrentAccount
+import get
 
 
 def signup():
@@ -9,7 +9,7 @@ def signup():
 
 
 def login():
-    auth.login(*getInputData('username', 'password'))
+    auth.login(*get.getInputData('username', 'password'))
 
 
 def logout():
@@ -17,11 +17,20 @@ def logout():
 
 
 def buy():
-    print('BUY')
+    user = get.getCurrentAccount()
+    if user:
+        _id = input('Enter ID of item to buy: ')
+        product = get.getProducts(_id)
+        if product['stock']>0:
+            get.buyItem(_id)
+        else:
+            print('Not left in stocks')
+    else:
+        print('You should be logged in to add product.')
 
 
 def add():
-    user = getCurrentAccount()
+    user = get.getCurrentAccount()
     if user:
         if user['role']=='superUser':
             createProduct()
@@ -32,7 +41,7 @@ def add():
 
 
 def showAccount():
-    user = getCurrentAccount()
+    user = get.getCurrentAccount()
     if user:
         if user['role']=='superUser':
             print('====ADMIN====')
@@ -45,12 +54,26 @@ def showAccount():
 
 
 def showCategories():
-    print('SHOW CATEGORIES')
+    user = get.getCurrentAccount()
+    categories = set([])
+    if user:
+        data = get.getProducts()
+        for product in data:
+            categories.add(product['category'])
+        for category in categories:
+            print(category)
+    else:
+        print('You should be logged in to show categories.')   
 
 
 def showProducts():
-    print('SHOW PRODUCTS')
-
+    user = get.getCurrentAccount()
+    if user:
+        data = get.getProducts()
+        for product in data:
+            print(f"{product['id']} - {product['name']} - {product['price']} - {product['stock']} left")
+    else:
+        print('You should be logged in to show products.')
 
 def help():
     print('HELP')

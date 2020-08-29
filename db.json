@@ -22,6 +22,20 @@
             "price": 999.99,
             "stock": 43,
             "category": "Phones"
+        },
+        {
+            "id": "153353535",
+            "name": "Samsung A3",
+            "price": 399.99,
+            "stock": 13,
+            "category": "Phones"
+        },
+        {
+            "id": "157553535",
+            "name": "BMW X5",
+            "price": 69999.99,
+            "stock": 0,
+            "category": "Cars"
         }
     ]
 }

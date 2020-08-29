@@ -12,7 +12,7 @@ if __name__ == '__main__':
             elif cmd == 'logout':
                 logout()  # OK
             elif cmd == 'buy':
-                buy()
+                buy() # 
             elif cmd == 'add':
                 add()  # OK
             elif cmd[0:4] == 'show':
@@ -20,9 +20,9 @@ if __name__ == '__main__':
                 if subCmd == 'account':
                     showAccount()  # OK
                 elif subCmd == 'categories':
-                    showCategories()
+                    showCategories()  # OK
                 elif subCmd == 'products':
-                    showProducts()
+                    showProducts()  # OK
             elif cmd == 'help':
                 help()  # FILL
             elif cmd == 'clear':
