@@ -1,8 +1,8 @@
 import os
+from create import createAccount
 
 
 def signup():
-    from create import createAccount
     createAccount()
 
 

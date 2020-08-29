@@ -14,9 +14,6 @@ class DBClient:
         with open(self.file, 'w') as source:
             current = self.getDB()
             print(current)
-            current.users.append(obj)
-            json.dump(current, source)
-            print('Successfully added user.')
 
     def getUser(self, _id):
         pass
@@ -38,3 +35,4 @@ class DBClient:
 
 
 db = DBClient('db.json')
+print(db.getDB())
