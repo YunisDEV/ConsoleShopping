@@ -8,7 +8,9 @@ class DBClient:
 
     def getDB(self):
         with open("db.json", 'rt') as read_file:
-            return json.load(read_file)
+            data = json.load(read_file)
+            read_file.close()
+            return data
 
     def addUser(self, obj):
         with open(self.file, 'w') as source:
@@ -35,4 +37,3 @@ class DBClient:
 
 
 db = DBClient('db.json')
-print(db.getDB())

@@ -42,8 +42,3 @@ def clear():
         clearString = 'clear'
     os.system(clearString)
 
-def getInputData(*args):
-    result = []
-    for arg in args:
-        result.append(input(str(arg)+': '))
-    return result
