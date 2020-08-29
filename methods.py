@@ -1,5 +1,7 @@
 import os
 from create import createAccount
+import auth
+from get import getInputData, getCurrentAccount
 
 
 def signup():
@@ -7,7 +9,11 @@ def signup():
 
 
 def login():
-    print('LOGIN')
+    auth.login(*getInputData('username', 'password'))
+
+
+def logout():
+    auth.logout()
 
 
 def buy():
@@ -19,7 +25,16 @@ def add():
 
 
 def showAccount():
-    print('SHOW ACCOUNT')
+    user = getCurrentAccount()
+    if user:
+        if user['role']=='superUser':
+            print('====ADMIN====')
+        print(f"ID      : {user['_id']}")
+        print(f"Name    : {user['name']}")
+        print(f"Username: {user['username']}")
+        print(f"Password: {'*'*len(user['password'])}")
+    else:
+        print('You have not logged in.')
 
 
 def showCategories():
@@ -41,4 +56,3 @@ def clear():
     else:
         clearString = 'clear'
     os.system(clearString)
-

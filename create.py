@@ -1,15 +1,9 @@
 from dbClient import db
-
-
-def getInputData(*args):
-    result = []
-    for arg in args:
-        result.append(input(str(arg)+': '))
-    return result
+from get import getInputData
 
 
 def createAccount():
-    params = ['Name', 'Username', 'Password']
+    params = ['name', 'username', 'password']
     data = getInputData(*params)
     user = {}
     for i in range(len(params)):

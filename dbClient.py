@@ -1,5 +1,6 @@
 import json
 import os
+import uuid
 
 
 class DBClient:
@@ -12,14 +13,40 @@ class DBClient:
             read_file.close()
             return data
 
-    def addUser(self, obj):
+    def writeDB(self,data):
         with open(self.file, 'w') as source:
-            current = self.getDB()
-            print(current)
+            json.dump(data, source)
+            print('Successfully added user.')
 
-    def getUser(self, _id):
-        pass
+    def addUser(self, obj):
+        current = self.getDB()
+        unique = True
+        for i in current['users']:
+            if i['username'] == obj['username']:
+                unique = False
+                break
+        if unique:
+            data = obj
+            if obj['username'] == 'admin':
+                data['role'] = 'superUser'
+            else:
+                data['role'] = 'user'
+            data['_id'] = str(uuid.uuid1())
+            current['users'].append(data)
+            self.writeDB(current)
+        else:
+            print('Username should be unique.')
 
+    def getUser(self, _username):
+        data = self.getDB()
+        for u in data['users']:
+            if u['username']==_username:
+                return u
+    def getUserById(self,_id):
+        data = self.getDB()
+        for u in data['users']:
+            if u['_id']==_id:
+                return u
     def deleteUser(self, _id):
         pass
 

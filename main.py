@@ -5,9 +5,11 @@ if __name__ == '__main__':
     while True:
         cmd = input('>> ')
         if cmd == 'signup':
-            signup()
+            signup() #OK
         elif cmd == 'login':
-            login()
+            login() #OK
+        elif cmd == 'logout':
+            logout() #OK
         elif cmd == 'buy':
             buy()
         elif cmd == 'add':
