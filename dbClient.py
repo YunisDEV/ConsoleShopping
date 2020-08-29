@@ -13,10 +13,10 @@ class DBClient:
             read_file.close()
             return data
 
-    def writeDB(self,data):
+    def writeDB(self,data,dataName):
         with open(self.file, 'w') as source:
             json.dump(data, source)
-            print('Successfully added user.')
+            print('Successfully added {dataName}.')
 
     def addUser(self, obj):
         current = self.getDB()
@@ -33,7 +33,7 @@ class DBClient:
                 data['role'] = 'user'
             data['_id'] = str(uuid.uuid1())
             current['users'].append(data)
-            self.writeDB(current)
+            self.writeDB(current,'user')
         else:
             print('Username should be unique.')
 
@@ -50,8 +50,21 @@ class DBClient:
     def deleteUser(self, _id):
         pass
 
-    def addProduct(self, *args):
-        pass
+    def addProduct(self, obj):
+        current = self.getDB()
+        unique = True
+        for i in current['products']:
+            if i['id'] == obj['id']:
+                unique = False
+                break
+        if unique:
+            data = obj
+            data['stock'] = int(data['stock'])
+            data['price'] = float(data['price'])
+            current['products'].append(data)
+            self.writeDB(current,'product')
+        else:
+            print('Product id should be unique.')
 
     def getProduct(self, _id=None):
         if _id == None:

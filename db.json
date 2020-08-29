@@ -1,1 +1,27 @@
-{"users": [{"name": "Yunis", "username": "yunisdev", "password": "blabla123", "role": "user", "_id": "a0a354d8-e9db-11ea-839b-a55068cf25bb"}], "products": []}
+{
+    "users": [
+        {
+            "name": "Yunis",
+            "username": "yunisdev",
+            "password": "blabla123",
+            "role": "user",
+            "_id": "a0a354d8-e9db-11ea-839b-a55068cf25bb"
+        },
+        {
+            "name": "Yunis",
+            "username": "admin",
+            "password": "blabla123",
+            "role": "superUser",
+            "_id": "12ae080c-e9e1-11ea-839b-a55068cf25bb"
+        }
+    ],
+    "products": [
+        {
+            "id": "1534624",
+            "name": "Iphone X",
+            "price": 999.99,
+            "stock": 43,
+            "category": "Phones"
+        }
+    ]
+}

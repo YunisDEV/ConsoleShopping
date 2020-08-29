@@ -1,5 +1,5 @@
 import os
-from create import createAccount
+from create import createAccount, createProduct
 import auth
 from get import getInputData, getCurrentAccount
 
@@ -21,7 +21,14 @@ def buy():
 
 
 def add():
-    print('ADD')
+    user = getCurrentAccount()
+    if user:
+        if user['role']=='superUser':
+            createProduct()
+        else:
+            print('You have not permission to add product.')
+    else:
+        print('You should be logged in to add product.')
 
 
 def showAccount():
@@ -47,6 +54,7 @@ def showProducts():
 
 def help():
     print('HELP')
+    #FILL IT
 
 
 def clear():
