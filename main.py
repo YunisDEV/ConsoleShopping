@@ -6,32 +6,32 @@ if __name__ == '__main__':
         try:
             cmd = input('>> ')
             if cmd == 'signup':
-                signup()  # OK
+                signup()
             elif cmd == 'login':
-                login()  # OK
+                login()
             elif cmd == 'logout':
-                logout()  # OK
+                logout()
             elif cmd == 'buy':
-                buy() # 
+                buy()
             elif cmd == 'add':
-                add()  # OK
+                add()
             elif cmd[0:4] == 'show':
-                subCmd = cmd.split(' ')[1]
+                subCmd = cmd.split(' ')[-1]
                 if subCmd == 'account':
-                    showAccount()  # OK
+                    showAccount()
                 elif subCmd == 'categories':
-                    showCategories()  # OK
+                    showCategories()
                 elif subCmd == 'products':
-                    showProducts()  # OK
+                    showProducts()
             elif cmd == 'help':
                 help()  # FILL
             elif cmd == 'clear':
-                clear()  # OK
+                clear()
             elif cmd == 'exit':
                 clear()
-                print('Thanks for using our services.')  # OK
+                print('Thanks for using our services.')
                 break
         except KeyboardInterrupt as e:
             clear()
-            print('Thanks for using our services.')  # OK
+            print('Thanks for using our services.')
             break

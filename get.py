@@ -1,4 +1,4 @@
-from auth import getCurrentID
+import auth
 from dbClient import db
 
 
@@ -10,12 +10,14 @@ def getInputData(*args):
 
 
 def getCurrentAccount():
-    if getCurrentID() == None:
+    if auth.getCurrentID() == None:
         return None
-    return db.getUserById(getCurrentID())
+    return db.getUser('_id', auth.getCurrentID())
+
 
 def getProducts(_id=None):
     return db.getProduct(_id)
+
 
 def buyItem(_id):
     db.buyItem(_id)

@@ -3,7 +3,7 @@ currentUser = None
 
 
 def login(_username, _password):
-    user = db.getUser(_username)
+    user = db.getUser('username',_username)
     if user:
         if user['password'] == _password:
             global currentUser

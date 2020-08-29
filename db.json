@@ -13,6 +13,20 @@
             "password": "blabla123",
             "role": "superUser",
             "_id": "12ae080c-e9e1-11ea-839b-a55068cf25bb"
+        },
+        {
+            "name": "Yusif",
+            "username": "yusifh",
+            "password": "aaa123bbb",
+            "role": "user",
+            "_id": "de8df9e2-ea0d-11ea-839b-a55068cf25bb"
+        },
+        {
+            "name": "Yunis",
+            "username": "yyhh",
+            "password": "adodg",
+            "role": "user",
+            "_id": "6adb1c40-ea0e-11ea-839b-a55068cf25bb"
         }
     ],
     "products": [
