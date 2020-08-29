@@ -1,12 +1,7 @@
 import auth
 from dbClient import db
 
-
-def getInputData(*args):
-    result = []
-    for arg in args:
-        result.append(input(str(arg).capitalize()+': '))
-    return result
+getInputData = lambda *args : [input(str(arg).capitalize()+': ') for arg in args]
 
 
 def getCurrentAccount():
